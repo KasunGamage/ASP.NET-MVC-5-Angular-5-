@@ -1,0 +1,113 @@
+<div class="container">
+
+    <br />
+    <h1>Calculate Monthly Leasing Rental</h1>
+
+    <a style="float:right" href="/details">View Leasing Details</a>
+    <br />
+
+    <!--form-->
+
+  
+        <form (ngSubmit)="createLease()" #leaseForm="ngForm">
+
+            <div class="row">
+
+                <!--Customer Name-->
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">Customer Name</label>
+                        <select class="form-control" [(ngModel)]="lease.cusName" name="cusName" (change)="changeOnUserId($event.target.value)">
+                            <option *ngFor="let customer of customerList; let i = index" [value]="customer.cusId">{{customer.cusName}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--Vehicle chassis number-->
+                <!--automatically selected when customer name select-->
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">Vehicle chassis number</label>
+                        <input type="text" class="form-control" [(ngModel)]="lease.vehChasiNbr" name="vehChasiNbr" required disabled>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <!--Lease start date-->
+                <!--automatically selected when customer name select-->
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">Lease start date</label>
+                        <input type="datetime" class="form-control" [(ngModel)]="lease.startDate" name="startDate" required disabled>
+                    </div>
+                </div>
+
+
+                <!--Lease amount-->
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">Lease amount</label>
+                        <input type="number" class="form-control" [(ngModel)]="lease.leaseAmount" name="leaseAmount" required>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <!--Interest rate-->
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">Interest rate</label>
+                        <input type="number" class="form-control" [(ngModel)]="lease.intersetRate" name="intersetRate" required>
+                    </div>
+                </div>
+
+                <!--Number of months-->
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">Number of months</label>
+                        <input type="number" class="form-control" [(ngModel)]="lease.nbrOfMonths" name="nbrOfMonths" required>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--calculate monthly rental-->
+
+            <div class="form-group">
+                <button type="button" class="btn btn-success btn-lg" (click)="calculateRental()">Calculate Rental</button>
+            </div>
+
+            <!--calculated monthly rentel-->
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">Your monthly rental</label>
+                        <input type="number" class="form-control" [(ngModel)]="lease.monthlyRental" name="monthlyRental" required disabled>
+                    </div>
+                </div>
+            </div>
+
+            <!--Add to db-->
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-success btn-lg" [disabled]="!leaseForm.form.valid">Add to database</button>
+            </div>
+
+
+
+        </form>
+ 
+</div>
+

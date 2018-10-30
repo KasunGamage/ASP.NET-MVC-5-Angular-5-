@@ -1,0 +1,41 @@
+<div class="container">
+    <br />
+    <h1>
+        Leasing Details List
+    </h1>
+
+    <a style="float:right" href="/create">Calculate new lease</a>
+    <br />
+    <br />
+
+    <div class="card">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Customer name</th>
+                    <th>Vehicle chassis number</th>
+                    <th>Lease start date</th>
+                    <th>Lease amount</th>
+                    <th>Interest rate</th>
+                    <th>Number of months</th>
+                    <th>Monthly rental</th>
+                    <th colspan="2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let lease of leaseList">
+
+                    <td>{{ lease.cusName }}</td>
+                    <td>{{ lease.vehChasiNbr }}</td>
+                    <td>{{ lease.startDate }}</td>
+                    <td>{{ lease.leaseAmount }}</td>
+                    <td>{{ lease.intersetRate }}</td>
+                    <td>{{ lease.nbrOfMonths }}</td>
+                    <td>{{ lease.monthlyRental }}</td>
+                    <td><a [routerLink]="" (click)="deleteLease(lease.Id)">Delete</a></td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

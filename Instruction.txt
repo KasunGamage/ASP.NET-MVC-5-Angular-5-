@@ -1,0 +1,28 @@
+1)Install node_modules 
+  => open cmd
+  => go to the path => ASPNET_mvc_Angular\WebApp\ClientApp
+  => npm install
+
+2)sql server configuration
+  => open sql server
+  => create database called => leasingDb
+
+3)open project in microsoft visual studio
+  => Server Explorer 
+  => Go To Data Connections => add the database (leasingDb)
+  => copy the connection string to the web.config file (WebAppContext)
+
+4)code first migrations
+  => remove exsisting migration folder
+  => Tools -> NuGet Packege Manager -> Packege Manager Console
+  => enable-migrations
+  => Add-Migration initial
+  => Add data in configuration.cs(attached txt file) file to file called configuration.cs (path => ASPNET_mvc_Angular\WebApp\Migrations\configuration.cs) 
+	=> add (using WebApp.Models;) to the configuration.cs
+  => Update-Database
+
+5)Clean the project
+6)Build the project
+7)Run the project
+
+or else use leasingDb.mdf file to restore database
